@@ -1,0 +1,145 @@
+/* :root{
+    font-size: 100%;
+    font-size: 16px;
+    line-height: 1.5;
+} */
+.container{
+    padding: 0;
+    margin: 0;
+    font-family: 'Montserrat','sans-serif';
+    font-weight: 500;
+    height: 100vh;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   padding: 30px;
+   background: linear-gradient(135deg, #71b7e6, #9b59b6);
+}
+.container1{
+    max-width: 900px;
+    width: 100%;
+    background-color: #fff;
+    padding: 25px 30px;
+    border-radius: 5px;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.15);
+  }
+.split-screen{
+    display:flex ;
+    flex-direction: column;
+}
+.left{
+    height: 300px;
+}
+.left.right{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.left{
+    background: url(./cutm.jpeg);
+    background-size: cover;
+}
+.right .copy{
+    color: black;
+    text-align: center;
+
+}
+
+.right form{
+    margin-left: 5%;
+    width: 500px;
+    height: auto;
+    
+}
+/* form input[type="text"],
+form input[type="email"]{
+    display: block;
+    width:100%;
+    box-sizing: border-box;
+    border-radius: 8px;
+    border: 1px solid #c4c4c4;
+    padding: 1em;
+    margin-bottom: 1.25rem;
+    font-size: 0.875rem;
+} */
+form .user-details{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 20px 0 12px 0;
+  }
+  form .user-details .input-box{
+    margin-bottom: 0.5px;
+    width: calc(100% / 2 - 20px);
+  }
+  form .input-box span.details{
+    display: block;
+    font-weight: 500;
+    margin-bottom: 5px;
+  }
+  .user-details .input-box input{
+    height: 45px;
+    width: 100%;
+    outline: none;
+    font-size: 16px;
+    border-radius: 5px;
+    padding-left: 15px;
+    border: 1px solid #ccc;
+    border-bottom-width: 2px;
+    transition: all 0.3s ease;
+  }
+  .user-details .input-box input:focus,
+  .user-details .input-box input:valid{
+    border-color: #9b59b6;
+  }
+  .checkbox-container input{
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+
+  }
+  .checkbox-container{
+    display: block;
+    position: relative;
+    padding-left: 2rem;
+    cursor: pointer;
+    user-select: none;
+    margin: 0 0 1.25rem 0;
+
+  }
+  form .button{
+    height: 30px;
+    margin: 20px 0
+  }
+  form .button input{
+    height: 80%;
+    width: 80%;
+    border-radius: 3px;
+    border: none;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background: linear-gradient(135deg, #71b7e6, #9b59b6);
+  }
+  form .button input:hover{
+   /* transform: scale(0.99); */
+   background: linear-gradient(-135deg, #71b7e6, #9b59b6);
+   }
+   @media screen and (min-width:1000px) {
+    .split-screen{
+        flex-direction: row;
+        height: 100vh;
+    }
+    .left, 
+    .right{
+        display: flex;
+        width: 50%;
+        height: auto;
+    }
+    
+   }
