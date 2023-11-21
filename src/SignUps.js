@@ -1,152 +1,5 @@
-// import React, { useState } from "react";
-
-// const Contact = () => {
-//   const [userData, setUserData] = useState({
-//     firstName: "",
-//     lastName: "",
-//     phone: "",
-//     email: "",
-//    password:"",
-//   });
-
-//   let name, value;
-//   const postUserData = (event) => {
-//     name = event.target.name;
-//     value = event.target.value;
-
-//     setUserData({ ...userData, [name]: value });
-//   };
-
-//   // connect with firebase
-//   const submitData = async (event) => {
-//     event.preventDefault();
-//     const { firstName, lastName, phone, email, password } = userData;
-
-//     if (firstName && lastName && phone && email && password) {
-//       const res = fetch(
-//         "https://reactfirebasewebsite-default-rtdb.firebaseio.com/userDataRecords.json",
-//         {
-//           method: "POST",
-//           headers: {
-//             "Content-Type": "application/json",
-//           },
-//           body: JSON.stringify({
-//             firstName,
-//             lastName,
-//             phone,
-//             email,
-//             password,
-//           }),
-//         }
-//       );
-
-//       if (res) {
-//         setUserData({
-//           firstName: "",
-//           lastName: "",
-//           phone: "",
-//           email: "",
-//           password:""
-//         });
-//         alert("Data Stored");
-//       } else {
-//         alert("plz fill the data");
-//       }
-//     } else {
-//       alert("plz fill the data");
-//     }
-//   };
-
-//   return (
-//     <>
-//     <section className="contactus-section md-4" >
-//     <div className="container-fluid div-color mx-auto ">
-// 		<div className="row align-center mx-auto">
-// 			<div className="col-md-4 offset-md-4">
-// 				<div className="card mt-5">
-// 					<div className="card-header text-center text-white bg-custom">
-// 						<i className="fa fa-user-plus fa-3x" aria-hidden="true"></i>
-// 						<h2>SignUp</h2>
-// 					</div>
-
-
-					
-// 					<div className="card-body " style={{ width: '100%' , height:'100%'}}>
-// 						<form  method="post align-center">
-// 							<div className="form-group  col-lg-12">
-// 								<label >FirstName</label> <input type="text"
-//                           name="firstName"
-//                           id=""
-//                           className="form-control"
-//                           placeholder="First Name"
-//                           value={userData.firstName}
-//                           onChange={postUserData} />
-
-// 							</div>
-//               <div className="form-group">
-// 								<label>LastName</label> <input type="text"
-//                           name="lastName"
-//                           id=""
-//                           className="form-control"
-//                           placeholder="LastName"
-//                           value={userData.lastName}
-//                           onChange={postUserData} />
-//               </div>
-// 							<div className="form-group">
-// 								<label>Phone</label> <input 
-//                           type="text"
-//                           name="phone"
-//                           id=""
-//                           className="form-control"
-//                           placeholder="Phone Number "
-//                           value={userData.phone}
-//                           onChange={postUserData}
-//                         />
-
-// 							</div>
-//               <div className="form-group">
-// 								<label>Email</label> <input 
-//                           type="text"
-//                           name="email"
-//                           id=""
-//                           className="form-control"
-//                           placeholder="Email ID "
-//                           value={userData.email}
-//                           onChange={postUserData}
-//                         />
-
-// 							</div>
-
-// 							<div className="form-group">
-// 								<label for="exampleInputPassword1">Enter Password</label> <input 
-//                           type="password"
-//                           name="password"
-//                           id=""
-//                           className="form-control"
-//                           placeholder="Password "
-//                           value={userData.password}
-//                           onChange={postUserData}
-//                         />
-
-// 							</div>
-// 							<button type="submit"
-// 								className="btn btn-primary bodge-pill btn.block"  onClick={submitData}>Register</button>
-// 						</form>
-// 					</div>
-// 				</div>
-
-// 			</div>
-// 		</div>
-// 	</div>
-//   </section>       
-     
-//     </>
-//   );
-// };
-
-// export default Contact;
-
 import React, { useState } from "react";
+import axios from "axios";
 
 const Contact = () => {
   const [userData, setUserData] = useState({
@@ -154,8 +7,7 @@ const Contact = () => {
     lastName: "",
     phone: "",
     email: "",
-    address: "",
-    message: "",
+    password: "",
   });
 
   let name, value;
@@ -169,44 +21,35 @@ const Contact = () => {
   // connect with firebase
   const submitData = async (event) => {
     event.preventDefault();
-    const { firstName, lastName, phone, email, address, message } = userData;
+    const { firstName, lastName, phone, email, password } = userData;
 
-    if (firstName && lastName && phone && email && address && message) {
-      const res = fetch(
-        "https://reactfirebasewebsite-default-rtdb.firebaseio.com/userDataRecords.json",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            firstName,
-            lastName,
-            phone,
-            email,
-            address,
-            message,
-          }),
-        }
-      );
-
-      if (res) {
-        setUserData({
-          firstName: "",
-          lastName: "",
-          phone: "",
-          email: "",
-          address: "",
-          message: "",
-        });
-        alert("Data Stored");
-      } else {
-        alert("plz fill the data");
+    if (firstName && lastName && phone && email && password) {
+      try{
+        const response = axios.post(
+          "your_signup_endpoint",
+          {
+            email: email,
+            password: password,
+            phoneNumber: phone,
+            firstName: firstName,
+            lastName: lastName,
+          }
+        )
+        console.log(response.data)
+        // localStorage.setItem("token", response.data.jwtToken)
+      }
+      catch(err){
+        console.log(err)
       }
     } else {
       alert("plz fill the data");
     }
   };
+
+  // const logout = () =>{
+  //   localStorage.removeItem("token")
+  // }
+
 
   return (
     <>
@@ -289,25 +132,11 @@ const Contact = () => {
                       <div className="col-12 contact-input-feild">
                         <input
                           type="text"
-                          name="address"
+                          name="password"
                           id=""
                           className="form-control"
-                          placeholder="Add Address"
-                          value={userData.address}
-                          onChange={postUserData}
-                        />
-                      </div>
-                    </div>
-
-                    <div className="row">
-                      <div className="col-12 ">
-                        <input
-                          type="text"
-                          name="message"
-                          id=""
-                          className="form-control"
-                          placeholder="Enter Your Message"
-                          value={userData.message}
+                          placeholder="password"
+                          value={userData.password}
                           onChange={postUserData}
                         />
                       </div>

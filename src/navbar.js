@@ -31,7 +31,7 @@ const Navbar = () => {
             <div class={`collapse navbar-collapse ${show ? "show" : ""}`}>
               <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                  <NavLink class="nav-link active" aria-current="page" to="/home">
+                  <NavLink class="nav-link active" aria-current="page" to="/">
                     Home
                   </NavLink>
                 </li>
@@ -52,12 +52,12 @@ const Navbar = () => {
                 </li>
               </ul>
               <form class="d-flex">
-                <button class="btn  btn-style btn-style-border" type="submit">
+                <button class="btn  btn-style btn-style-border flex" type="submit">
                 <NavLink class="nav-link" to="/signup">
                   Sign Up
                   </NavLink>
                 </button>
-                <button class="btn  btn-style btn-style-border" type="submit">
+                <button class="btn  btn-style btn-style-border flex" type="submit">
                 <NavLink class="nav-link" to="/login">
                   Login
                   </NavLink>
